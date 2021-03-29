@@ -23,10 +23,14 @@ function App() {
 
    const getData = async () => {
     const docs = [];
-      db.collection("user").onSnapshot((querySnapshot) => {
+      db.collection("user").where('genero', '==','femenino').onSnapshot((querySnapshot) => {
       querySnapshot.forEach(doc => {
         docs.push({ ...doc.data(), id: doc.id });
       });
+      //   db.collection("user").where('genero', '==','femenino').get().then((snapshot) => {
+      // snapshot.docs.forEach(doc => {
+      //   docs.push({ ...doc.data(), id: doc.id });
+      // });
       //console.log(docs)
       setUsers(docs);
     });
@@ -66,7 +70,7 @@ function App() {
               <h3></h3>
               <div className="card-body">
                 <div className=""> <h4>email: {user.email}</h4>
-                  <h4>password: {user.password}</h4></div>
+                  <h4>password: {user.password}</h4> <h4>genero: {user.genero}</h4></div>
                 <Button variant="danger" size="lg" block type="submit" onClick={() => deleteData(user.id)}>
                   Delete
             </Button>

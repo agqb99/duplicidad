@@ -4,10 +4,13 @@ import { db } from "./firebase";
 const Login = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const generoRef = useRef();
+
 
   const initialStateValues = {
     email: "",
     password: "",
+    genero: "",
   };
 
   const [values, setValues] = useState(initialStateValues);
@@ -30,7 +33,7 @@ const Login = (props) => {
   const loadUserInForm = async (id) => {
   const busquedaUser = props.users.find( user => id == user.id)
     //console.log(result.data())
-    setValues({email: busquedaUser.email, password:busquedaUser.password})
+    setValues({email: busquedaUser.email, password:busquedaUser.password, genero:busquedaUser.genero})
   }
   useEffect(()=>{
   //  console.log(props.currentId)
@@ -69,6 +72,17 @@ const Login = (props) => {
                 placeholder="Password"
                 onChange={handleControlChange}
                  value={values.password}
+              />
+            </Form.Group>
+            <Form.Group id="genero">
+              <Form.Label>Genero</Form.Label>
+              <Form.Control
+                name="genero"
+                type="genero"
+                ref={generoRef}
+                placeholder="Genero"
+                onChange={handleControlChange}
+                 value={values.genero}
               />
             </Form.Group>
             <Button variant="primary" size="lg" block type="submit"> {props.currentId ==="" ? "Guardar": "Actualizar"}
