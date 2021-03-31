@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Form, Button, Card } from "react-bootstrap";
-import { db } from "./firebase";
 const Login = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const generoRef = useRef();
-
 
   const initialStateValues = {
     email: "",
@@ -17,7 +15,6 @@ const Login = (props) => {
 
   const handleControlChange = (e) => {
     const { name, value } = e.target
-    // console.log(name, value);
     setValues({ ...values,
        [name]: value
       });
@@ -32,15 +29,12 @@ const Login = (props) => {
 
   const loadUserInForm = async (id) => {
   const busquedaUser = props.users.find( user => id == user.id)
-    //console.log(result.data())
     setValues({email: busquedaUser.email, password:busquedaUser.password, genero:busquedaUser.genero})
   }
   useEffect(()=>{
-  //  console.log(props.currentId)
     if (props.currentId ===""){
       setValues({...initialStateValues});
     } else {
-    //  console.log("Editando Link")
     loadUserInForm(props.currentId);
     }
   },[props.currentId]);
