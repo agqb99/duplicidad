@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import Login from "./Components/Login.jsx";
 import { Container } from "react-bootstrap";
-import Navbar from "./Components/Navbar.jsx";
 import { db } from "./Components/firebase";
+import Navbar from "./Components/Navbar.jsx";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Inicio from "./Components/Inicio.jsx";
+import Login from "./Components/Login.jsx";
+import Registro from "./Components/Registro.jsx";
 function App() {
   const [users, setUsers] = useState([]);
   const [currentId, setCurrentId] = useState("");
