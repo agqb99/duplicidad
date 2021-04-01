@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 import { Container } from "react-bootstrap";
-import { db } from "./Components/firebase";
+ import { db } from "./Components/firebase";
 import Navbar from "./Components/Navbar.jsx";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Inicio from "./Components/Inicio.jsx";
+// import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+ import Inicio from "./Components/Inicio.jsx";
 import Login from "./Components/Login.jsx";
-import Registro from "./Components/Registro.jsx";
-function App() {
-  const [users, setUsers] = useState([]);
+// import Registro from "./Components/Registro.jsx";
+import Users from "./Components/Users.js"
+
+const App = () => {
+    const [users, setUsers] = useState([]);
   const [currentId, setCurrentId] = useState("");
 
-  const addData = async (userData) => {
+    const addData = async (userData) => {
     const usersTemp = [].concat(users);
     if (currentId === "") {
       const userRef = await db.collection("user").add(userData);
@@ -38,20 +40,7 @@ function App() {
     }
     setCurrentId("");
   };
-
-  const getData = async () => {
-    const docs = [];
-    await db
-      .collection("user")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          docs.push({ ...doc.data(), id: doc.id });
-        });
-        setUsers(docs);
-      });
-  };
-  const deleteData = async (id) => {
+const deleteData = async (id) => {
     const usersTemp = [].concat(users);
     if (window.confirm("Eliminar usuario?")) {
       //console.log(id)
@@ -64,12 +53,25 @@ function App() {
       );
     }
   };
+  const getData = async () => {
+    const docs = [];
+    await db
+      .collection("user")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          docs.push({ ...doc.data(), id: doc.id });
+        });
+        setUsers(docs);
+      });
+  };
   useEffect(() => {
     getData();
   }, []);
+
   return (
     <>
-      <Navbar />
+       <Navbar />
       <br></br>
       <br></br>
       <br></br>
@@ -78,43 +80,15 @@ function App() {
         style={{ minHeight: "100vh" }}
       >
         <div className="w-100" style={{ maxWidth: "400px" }}>
-          <Login addData={addData} currentId={currentId} users={users} />
+          <Login addData={addData} currentId={currentId} users={users} /> 
         </div>
-        <div className="w-100" style={{ maxWidth: "400px" }}>
-          {users.map((user) => (
-            <div className="card mb-1 ml-4 mt-2" key={user.id}>
-              <h3></h3>
-              <div className="card-body">
-                <div className="">
-                  {" "}
-                  <h4>email: {user.email}</h4>
-                  <h4>password: {user.password}</h4>{" "}
-                  <h4>genero: {user.genero}</h4>
-                </div>
-                <Button
-                  variant="danger"
-                  size="lg"
-                  block
-                  type="submit"
-                  onClick={() => deleteData(user.id)}
-                >
-                  Delete
-                </Button>
-                <Button
-                  variant="warning"
-                  size="lg"
-                  block
-                  type="submit"
-                  onClick={() => setCurrentId(user.id)}
-                >
-                  Edit
-                </Button>
-              </div>
-            </div>
-          ))}
-        </div>
+           <Users addData={addData} users={users} currentId={currentId} deleteData={deleteData} setCurrentId={setCurrentId}  />
+        <div className="" style={{ maxWidth: "400px" }}>
+           <Inicio/>
+</div>
+
       </Container>
     </>
   );
 }
-export default App;
+export default  App;

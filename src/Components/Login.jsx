@@ -14,30 +14,31 @@ const Login = (props) => {
   const [values, setValues] = useState(initialStateValues);
 
   const handleControlChange = (e) => {
-    const { name, value } = e.target
-    setValues({ ...values,
-       [name]: value
-      });
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   props.addData(values);
-   setValues({...initialStateValues})
-
-   };
+    props.addData(values);
+    setValues({ ...initialStateValues });
+  };
 
   const loadUserInForm = async (id) => {
-  const busquedaUser = props.users.find( user => id == user.id)
-    setValues({email: busquedaUser.email, password:busquedaUser.password, genero:busquedaUser.genero})
-  }
-  useEffect(()=>{
-    if (props.currentId ===""){
-      setValues({...initialStateValues});
+    const busquedaUser = props.users.find((user) => id == user.id);
+    setValues({
+      email: busquedaUser.email,
+      password: busquedaUser.password,
+      genero: busquedaUser.genero,
+    });
+  };
+  useEffect(() => {
+    if (props.currentId === "") {
+      setValues({ ...initialStateValues });
     } else {
-    loadUserInForm(props.currentId);
+      loadUserInForm(props.currentId);
     }
-  },[props.currentId]);
+  }, [props.currentId]);
 
   return (
     <>
@@ -65,7 +66,7 @@ const Login = (props) => {
                 ref={passwordRef}
                 placeholder="Password"
                 onChange={handleControlChange}
-                 value={values.password}
+                value={values.password}
               />
             </Form.Group>
             <Form.Group id="genero">
@@ -76,10 +77,12 @@ const Login = (props) => {
                 ref={generoRef}
                 placeholder="Genero"
                 onChange={handleControlChange}
-                 value={values.genero}
+                value={values.genero}
               />
             </Form.Group>
-            <Button variant="primary" size="lg" block type="submit"> {props.currentId ==="" ? "Guardar": "Actualizar"}
+            <Button variant="primary" size="lg" block type="submit">
+              {" "}
+              {props.currentId === "" ? "Guardar" : "Actualizar"}
             </Button>
           </Form>
         </Card.Body>
