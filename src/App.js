@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 // import { Button } from "react-bootstrap";
 import { Container } from "react-bootstrap";
- import { db } from "./Components/firebase";
+import { db } from "./Components/firebase";
 import Navbar from "./Components/Navbar.jsx";
-// import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
- import Inicio from "./Components/Inicio.jsx";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Inicio from "./Components/Inicio.jsx";
 import Login from "./Components/Login.jsx";
 // import Registro from "./Components/Registro.jsx";
-import Users from "./Components/Users.js"
+import Users from "./Components/Users.js";
 
 const App = () => {
-    const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
   const [currentId, setCurrentId] = useState("");
 
-    const addData = async (userData) => {
+  const addData = async (userData) => {
     const usersTemp = [].concat(users);
     if (currentId === "") {
       const userRef = await db.collection("user").add(userData);
@@ -24,7 +24,7 @@ const App = () => {
       // console.log("user actualizado");
       setUsers(
         users.map((user) => {
-          if (currentId == user.id) {
+          if (currentId === user.id) {
             // return user
             return {
               id: currentId,
@@ -40,7 +40,7 @@ const App = () => {
     }
     setCurrentId("");
   };
-const deleteData = async (id) => {
+  const deleteData = async (id) => {
     const usersTemp = [].concat(users);
     if (window.confirm("Eliminar usuario?")) {
       //console.log(id)
@@ -71,7 +71,7 @@ const deleteData = async (id) => {
 
   return (
     <>
-       <Navbar />
+      <Navbar />
       <br></br>
       <br></br>
       <br></br>
@@ -80,15 +80,40 @@ const deleteData = async (id) => {
         style={{ minHeight: "100vh" }}
       >
         <div className="w-100" style={{ maxWidth: "400px" }}>
-          <Login addData={addData} currentId={currentId} users={users} /> 
-        </div>
+          {/* <Login addData={addData} currentId={currentId} users={users} /> */}
+          {/* </div>
            <Users addData={addData} users={users} currentId={currentId} deleteData={deleteData} setCurrentId={setCurrentId}  />
         <div className="" style={{ maxWidth: "400px" }}>
-           <Inicio/>
-</div>
+           <Inicio/> */}
 
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Inicio}></Route>
+              <Route
+                path="/login"
+                render={() => (
+                  <>
+                    <Login
+                      addData={addData}
+                      currentId={currentId}
+                      users={users}
+                    />
+                    <Users
+                      addData={addData}
+                      users={users}
+                      currentId={currentId}
+                      deleteData={deleteData}
+                      setCurrentId={setCurrentId}
+                    />
+                  </>
+                )}
+              ></Route>
+              {/* <Route path="/users" render={() => (<Users addData={addData} currentId={currentId} users={users}/>)}></Route> */}
+            </Switch>
+          </Router>
+        </div>
       </Container>
     </>
   );
-}
-export default  App;
+};
+export default App;

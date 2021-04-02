@@ -25,7 +25,7 @@ const Login = (props) => {
   };
 
   const loadUserInForm = async (id) => {
-    const busquedaUser = props.users.find((user) => id == user.id);
+    const busquedaUser = props.users.find((user) => id === user.id);
     setValues({
       email: busquedaUser.email,
       password: busquedaUser.password,
