@@ -8,7 +8,8 @@ import Inicio from "./Components/Inicio.jsx";
 import Login from "./Components/Login.jsx";
 // import Registro from "./Components/Registro.jsx";
 import Users from "./Components/Users.js";
-
+import SignUp from "./Components/SignUp";
+import { AuthProvider } from "./Context/AuthContext";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [currentId, setCurrentId] = useState("");
@@ -30,7 +31,6 @@ const App = () => {
               id: currentId,
               email: userData.email,
               password: userData.password,
-              genero: userData.genero,
             };
           } else {
             return user;
@@ -75,44 +75,56 @@ const App = () => {
       <br></br>
       <br></br>
       <br></br>
-      <Container
-        className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: "100vh" }}
-      >
-        <div className="w-100" style={{ maxWidth: "400px" }}>
-          {/* <Login addData={addData} currentId={currentId} users={users} /> */}
-          {/* </div>
+      <AuthProvider>
+        <Container
+          className="d-flex align-items-center justify-content-center"
+          style={{ minHeight: "100vh" }}
+        >
+          <div className="w-100" style={{ maxWidth: "400px" }}>
+            {/* <Login addData={addData} currentId={currentId} users={users} /> */}
+            {/* </div>
            <Users addData={addData} users={users} currentId={currentId} deleteData={deleteData} setCurrentId={setCurrentId}  />
         <div className="" style={{ maxWidth: "400px" }}>
            <Inicio/> */}
 
-          <Router>
-            <Switch>
-              <Route exact path="/" component={Inicio}></Route>
-              <Route
-                path="/login"
-                render={() => (
-                  <>
+            <Router>
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={() => (
+                    // <>
                     <Login
                       addData={addData}
                       currentId={currentId}
                       users={users}
                     />
-                    <Users
+                    // <Users
+                    //   addData={addData}
+                    //   users={users}
+                    //   currentId={currentId}
+                    //   deleteData={deleteData}
+                    //   setCurrentId={setCurrentId}
+                    // />
+                    // </>
+                  )}
+                ></Route>
+                <Route
+                  path="/signup"
+                  render={() => (
+                    // <>
+                    <SignUp
                       addData={addData}
-                      users={users}
                       currentId={currentId}
-                      deleteData={deleteData}
-                      setCurrentId={setCurrentId}
+                      users={users}
                     />
-                  </>
-                )}
-              ></Route>
-              {/* <Route path="/users" render={() => (<Users addData={addData} currentId={currentId} users={users}/>)}></Route> */}
-            </Switch>
-          </Router>
-        </div>
-      </Container>
+                  )}
+                ></Route>
+              </Switch>
+            </Router>
+          </div>
+        </Container>
+      </AuthProvider>
     </>
   );
 };

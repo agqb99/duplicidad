@@ -23,7 +23,6 @@ import { Container } from "react-bootstrap";
                   {" "}
                   <h4>email: {user.email}</h4>
                   <h4>password: {user.password}</h4>{" "}
-                  <h4>genero: {user.genero}</h4>
                 </div>
                 <Button
                   variant="danger"
