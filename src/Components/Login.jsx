@@ -43,7 +43,7 @@ const Login = (props) => {
     <>
       <Card>
         <Card.Body>
-          <h2>Login</h2>
+          <h2>LogIn</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email address</Form.Label>
@@ -68,8 +68,10 @@ const Login = (props) => {
                 value={values.password}
               />
             </Form.Group>
-               {/* <Form.Group id="password"> */}
-              <Form.Label>No tienes una cuenta? <Link to="/signup">Crear Cuenta aqui</Link></Form.Label>
+            {/* <Form.Group id="password"> */}
+            <Form.Label>
+              No tienes una cuenta? <Link to="/signup">Crear Cuenta aqui</Link>
+            </Form.Label>
             {/* </Form.Group> */}
             <Button variant="primary" size="lg" block type="submit">
               {" "}

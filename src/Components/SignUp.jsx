@@ -2,13 +2,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../Context/AuthContext";
+import { Link, useHistory } from "react-router-dom";
 
 const SignUp = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
   const { signup } = useAuth();
-
+  const history = useHistory();
+  // const [loading, setLoading] = useState(false);
   const initialStateValues = {
     email: "",
     password: "",
@@ -33,10 +35,13 @@ const SignUp = (props) => {
       setShow(true);
     }
     try {
+      // setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      history.push("/");
     } catch {
       console.error("Error");
     }
+    // setLoading(false);
   };
 
   const loadUserInForm = async (id) => {
@@ -69,7 +74,7 @@ const SignUp = (props) => {
     <>
       <Card>
         <Card.Body>
-          <h2>Login</h2>
+          <h2>Registrate</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email address</Form.Label>
@@ -116,6 +121,11 @@ const SignUp = (props) => {
             ) : (
               ""
             )}
+
+            <Form.Label>
+              Ya tienes una cuenta? <Link to="/">Log In</Link>
+            </Form.Label>
+
             <Button variant="primary" size="lg" block type="submit">
               {" "}
               {props.currentId === "" ? "Guardar" : "Actualizar"}
