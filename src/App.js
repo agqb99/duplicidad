@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-// import { Button } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { db } from "./Components/firebase";
 import Navbar from "./Components/Navbar.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Inicio from "./Components/Inicio.jsx";
 import Login from "./Components/Login.jsx";
-// import Registro from "./Components/Registro.jsx";
-import Users from "./Components/Users.js";
 import SignUp from "./Components/SignUp";
 import { AuthProvider } from "./Context/AuthContext";
+import Prueba from "./Components/Prueba";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [currentId, setCurrentId] = useState("");
@@ -22,11 +19,9 @@ const App = () => {
       setUsers(usersTemp);
     } else {
       await db.collection("user").doc(currentId).update(userData);
-      // console.log("user actualizado");
       setUsers(
         users.map((user) => {
           if (currentId === user.id) {
-            // return user
             return {
               id: currentId,
               email: userData.email,
@@ -43,7 +38,6 @@ const App = () => {
   const deleteData = async (id) => {
     const usersTemp = [].concat(users);
     if (window.confirm("Eliminar usuario?")) {
-      //console.log(id)
       await db.collection("user").doc(id).delete();
       console.log("user eliminado");
       setUsers(
@@ -81,38 +75,22 @@ const App = () => {
           style={{ minHeight: "100vh" }}
         >
           <div className="w-100" style={{ maxWidth: "400px" }}>
-            {/* <Login addData={addData} currentId={currentId} users={users} /> */}
-            {/* </div>
-           <Users addData={addData} users={users} currentId={currentId} deleteData={deleteData} setCurrentId={setCurrentId}  />
-        <div className="" style={{ maxWidth: "400px" }}>
-           <Inicio/> */}
-
             <Router>
               <Switch>
                 <Route
                   exact
                   path="/"
                   render={() => (
-                    // <>
                     <Login
                       addData={addData}
                       currentId={currentId}
                       users={users}
                     />
-                    // <Users
-                    //   addData={addData}
-                    //   users={users}
-                    //   currentId={currentId}
-                    //   deleteData={deleteData}
-                    //   setCurrentId={setCurrentId}
-                    // />
-                    // </>
                   )}
                 ></Route>
                 <Route
                   path="/signup"
                   render={() => (
-                    // <>
                     <SignUp
                       addData={addData}
                       currentId={currentId}
@@ -120,6 +98,7 @@ const App = () => {
                     />
                   )}
                 ></Route>
+                <Route path="/prueba" render={() => <Prueba />}></Route>
               </Switch>
             </Router>
           </div>

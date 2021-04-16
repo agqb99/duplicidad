@@ -1,19 +1,14 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Container } from "react-bootstrap";
-// import Navbar from "./Components/Navbar.jsx";
-// import { db } from "./firebase";
 
- const Users = (props) => {
-
+const Users = (props) => {
   return (
     <>
-
       <Container
         className="d-flex align-items-center justify-content-center"
         style={{ minHeight: "100vh" }}
       >
-
         <div className="w-100" style={{ maxWidth: "400px" }}>
           {props.users.map((user) => (
             <div className="card mb-1 ml-4 mt-2" key={user.id}>
@@ -49,5 +44,5 @@ import { Container } from "react-bootstrap";
       </Container>
     </>
   );
-}
+};
 export default Users;

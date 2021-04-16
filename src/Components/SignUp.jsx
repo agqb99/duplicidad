@@ -1,4 +1,3 @@
-// import { render } from "@testing-library/react";
 import React, { useEffect, useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../Context/AuthContext";
@@ -10,7 +9,6 @@ const SignUp = (props) => {
   const confirmPasswordRef = useRef();
   const { signup } = useAuth();
   const history = useHistory();
-  // const [loading, setLoading] = useState(false);
   const initialStateValues = {
     email: "",
     password: "",
@@ -26,22 +24,24 @@ const SignUp = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(checkConfirmPassword());
+    const checkConfirmPassword = () =>
+      passwordRef.current.value === confirmPasswordRef.current.value
+        ? true
+        : false;
+
     if (checkConfirmPassword()) {
       props.addData({ email: values.email, password: values.password });
       setValues({ ...initialStateValues });
+      history.push("/");
       setShow(false);
     } else {
       setShow(true);
     }
     try {
-      // setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
     } catch {
       console.error("Error");
     }
-    // setLoading(false);
   };
 
   const loadUserInForm = async (id) => {
@@ -49,7 +49,6 @@ const SignUp = (props) => {
     setValues({
       email: busquedaUser.email,
       password: busquedaUser.password,
-      //   confirmPassword: busquedaUser.confirmPassword,
     });
   };
   useEffect(() => {
@@ -66,9 +65,6 @@ const SignUp = (props) => {
   //     }
   //      return false;
   //   };
-
-  const checkConfirmPassword = () =>
-    values.password === values.confirmPassword ? true : false;
 
   return (
     <>
@@ -137,7 +133,3 @@ const SignUp = (props) => {
   );
 };
 export default SignUp;
-
-{
-  /* Operador ternario */
-}
