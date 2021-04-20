@@ -7,6 +7,7 @@ import Login from "./Components/Login.jsx";
 import SignUp from "./Components/SignUp";
 import { AuthProvider } from "./Context/AuthContext";
 import Prueba from "./Components/Prueba";
+import PrivateRoute from "./Components/PrivateRoute";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [currentId, setCurrentId] = useState("");
@@ -77,6 +78,7 @@ const App = () => {
           <div className="w-100" style={{ maxWidth: "400px" }}>
             <Router>
               <Switch>
+                <PrivateRoute path="/prueba" component={Prueba} />
                 <Route
                   exact
                   path="/"
@@ -98,7 +100,6 @@ const App = () => {
                     />
                   )}
                 ></Route>
-                <Route path="/prueba" render={() => <Prueba />}></Route>
               </Switch>
             </Router>
           </div>
