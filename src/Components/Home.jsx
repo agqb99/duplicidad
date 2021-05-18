@@ -18,6 +18,7 @@ import babel from "../babel.jpg";
 import webpack from "../webpack.png";
 import firebase from "../firebase.png";
 import lodash from "../lodash.jpg";
+import "../scss/app.scss";
 
 const Home = () => {
   return (
