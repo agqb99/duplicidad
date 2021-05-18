@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
-import { useAuth } from "../Context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../Context/AuthContext";
 
 const SignUp = (props) => {
   const emailRef = useRef();
@@ -12,7 +12,7 @@ const SignUp = (props) => {
   const initialStateValues = {
     email: "",
     password: "",
-    confirmPassword: "",
+    confirmPasswordRef: "",
   };
 
   const [values, setValues] = useState(initialStateValues);
@@ -117,7 +117,6 @@ const SignUp = (props) => {
             ) : (
               ""
             )}
-
             <Form.Label>
               Ya tienes una cuenta? <Link to="/">Log In</Link>
             </Form.Label>

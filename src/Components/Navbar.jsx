@@ -11,17 +11,17 @@ const Navbar = () => {
         fixed="top"
         className="mb-1"
       >
-        <ReactBootStrap.Navbar.Brand href="#home">
+        <ReactBootStrap.Navbar.Brand href="/home">
           Navbar
         </ReactBootStrap.Navbar.Brand>
         <ReactBootStrap.Nav className="mx-auto">
-          <ReactBootStrap.Nav.Link href="#home" className="mr-3">
+          <ReactBootStrap.Nav.Link href="/home" className="mr-3">
             Home
           </ReactBootStrap.Nav.Link>
-          <ReactBootStrap.Nav.Link href="#about-us" className="mr-3">
+          <ReactBootStrap.Nav.Link href="/about-us" className="mr-3">
             About Us
           </ReactBootStrap.Nav.Link>
-          <ReactBootStrap.Nav.Link href="#pricing">
+          <ReactBootStrap.Nav.Link href="/pricing">
             Pricing
           </ReactBootStrap.Nav.Link>
         </ReactBootStrap.Nav>

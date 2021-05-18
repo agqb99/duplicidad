@@ -8,6 +8,7 @@ import SignUp from "./Components/SignUp";
 import { AuthProvider } from "./Context/AuthContext";
 import Prueba from "./Components/Prueba";
 import PrivateRoute from "./Components/PrivateRoute";
+import Home from "./Components/Home.jsx";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [currentId, setCurrentId] = useState("");
@@ -100,6 +101,7 @@ const App = () => {
                     />
                   )}
                 ></Route>
+                <Route path="/home" render={() => <Home />}></Route>
               </Switch>
             </Router>
           </div>
