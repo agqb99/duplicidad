@@ -12,7 +12,7 @@ const SignUp = (props) => {
   const initialStateValues = {
     email: "",
     password: "",
-    confirmPassword: "",
+    confirmPasswordRef: "",
   };
 
   const [values, setValues] = useState(initialStateValues);
