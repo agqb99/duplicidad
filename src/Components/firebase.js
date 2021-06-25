@@ -3,13 +3,12 @@ import "firebase/firebase-firestore";
 import "firebase/auth";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyDXnUZeyXw4HA1eODBx0KWg6KyXLDw1C44",
-  authDomain: "firestore-project-d978d.firebaseapp.com",
-  projectId: "firestore-project-d978d",
-  storageBucket: "firestore-project-d978d.appspot.com",
-  messagingSenderId: "486665948826",
-  appId: "1:486665948826:web:de2e9c15070258f6e25923",
-  measurementId: "G-20TLNZXV62",
+  apiKey: "AIzaSyAj_XxT1BF0ieStIjZe6tSCssYc9h-dEA4",
+  authDomain: "agqb-blog.firebaseapp.com",
+  projectId: "agqb-blog",
+  storageBucket: "agqb-blog.appspot.com",
+  messagingSenderId: "779806643639",
+  appId: "1:779806643639:web:a30473262fe6cca8370432",
 };
 // Initialize Firebase
 const fb = firebase.initializeApp(firebaseConfig);

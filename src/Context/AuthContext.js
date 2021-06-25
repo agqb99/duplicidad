@@ -1,15 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../Components/firebase";
+import { useHistory, useLocation } from "react-router-dom";
+
 const AuthContext = React.createContext();
 
 export function useAuth() {
   return useContext(AuthContext);
 }
 export function AuthProvider({ children }) {
-  const [currentUser, SetCurrentUser] = useState();
+  const history = useHistory();
+  const location = useLocation();
+  const [currentUser, setCurrentUser] = useState();
+  const [hasFirebaseInitialized, setFirebaseInitialized] = useState(false);
 
   function signup(email, password) {
-    console.log(email, password);
     return auth.createUserWithEmailAndPassword(email, password);
   }
   function login(email, password) {
@@ -21,7 +25,22 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unSuscribe = auth.onAuthStateChanged((user) => {
-      SetCurrentUser(user);
+      if (user) {
+        console.log("User", user);
+        setCurrentUser(() => {
+          return user;
+        });
+
+        if (location.pathname === "/login") {
+          history.push("/content");
+        }
+      } else {
+        setCurrentUser(user);
+        console.log("user is not authenticated");
+      }
+      setFirebaseInitialized(() => {
+        return true;
+      });
     });
     return unSuscribe;
   }, []);
@@ -31,6 +50,9 @@ export function AuthProvider({ children }) {
     login,
     signup,
     logout,
+    setCurrentUser,
+    hasFirebaseInitialized,
   };
+
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

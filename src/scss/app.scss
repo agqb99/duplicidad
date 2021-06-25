@@ -1,0 +1,430 @@
+// Components de Home
+.paragraph {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.container-about {
+  margin-top: 200px;
+}
+.button-about {
+  margin-left: 240px;
+  width: 150px;
+  margin-top: 20px;
+}
+.Jumbotron {
+  background-color: rgb(248, 250, 131);
+  margin-left: 0px;
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+.logo2 {
+  margin-top: 1070px;
+  margin-bottom: -50px;
+  text-align: center;
+  font-family: "Lucida Handwriting";
+}
+.boton {
+  margin-left: 600px;
+  margin-right: 700px;
+}
+
+.about {
+  padding: 100px;
+  text-align: center;
+}
+
+.about_academy {
+  background-color: #3198f8;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin-bottom: 500rem;
+  display: block;
+  height: 450px;
+}
+.about_me {
+  background-color: #f1be4f;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin-bottom: 500rem;
+  height: 450px;
+  display: block;
+  margin-top: 450px;
+}
+//Final home
+
+//Components about-me
+.color-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(#f4f5bd, #f1be4f);
+  border-radius: 0px 10px 10px 10px;
+  height: 50%;
+  width: 80%;
+  z-index: -1;
+}
+
+.about-me-title {
+  margin-top: 45px;
+  margin-bottom: 100px;
+}
+.about-me-text {
+  margin-top: 50px;
+}
+
+.me {
+  height: 300px;
+  width: 200px;
+  margin-left: 500px;
+  margin-top: -290px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.hr {
+  margin-bottom: 3rem;
+  border: 0 solid transparent;
+  border-bottom: 0.0625rem solid;
+}
+.hr2 {
+  margin-bottom: 3rem;
+  border: 0 solid transparent;
+  border-bottom: 0.0625rem solid;
+}
+
+//Final about-me
+
+//Components about academy
+.imagen-academia {
+  height: 50px;
+  width: 50px;
+  margin-left: -230px;
+  margin-top: -45px;
+  margin-bottom: 1px;
+}
+.imagen-container {
+  border: black;
+  position: absolute;
+  right: 0;
+  background: linear-gradient(#a6e3eb, #6ca9e2);
+  border-radius: 10px 0 0 10px;
+  height: 50%;
+  width: 80%;
+  z-index: -1;
+}
+.academy {
+  margin-top: -200px;
+}
+
+.text-academy {
+  margin-top: 100px;
+  margin-left: 200px;
+  width: 500px;
+  color: black;
+}
+
+.icon {
+  left: 15rem;
+  margin-right: 30rem;
+}
+
+.icon3 {
+  left: -15rem;
+}
+.footer {
+  text-align: center;
+  color: white;
+  background-color: rgb(41, 41, 39);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  display: block;
+  margin-top: 260px;
+}
+.footer-text {
+  color: white;
+  margin-top: 70px;
+}
+
+//academy
+
+//Contents
+.contents {
+  margin-top: 1rem;
+  position: relative;
+  background: linear-gradient(#c6ea8d, #ffe98a);
+  border-radius: 10px 10px 0 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  height: 850px;
+}
+
+.button-card {
+  margin-top: -10px;
+}
+.card {
+  height: 70px;
+}
+
+.video {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.container-content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(#f4f5bd, #f1be4f);
+  border-radius: 0px 10px 10px 10px;
+  height: 60%;
+  width: 20%;
+  z-index: -1;
+  margin-bottom: -17rem;
+}
+
+.container-content2 {
+  position: absolute;
+  right: 0;
+  bottom: 20%;
+  background: linear-gradient(#f4f5bd, #f1be4f);
+  border-radius: 10px 10px 10px 10px;
+  height: 70%;
+  width: 50%;
+  z-index: -5;
+}
+
+.container-content3 {
+  position: absolute;
+  right: 0;
+  background: linear-gradient(#f4f5bd, #f5a40d);
+  border-radius: 10px 10px 10px 10px;
+  height: 70px;
+  z-index: -50;
+  margin-top: 140px;
+  margin-bottom: -50rem;
+}
+
+.card1 {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 0;
+}
+.logo-content {
+  margin-top: 160px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.footer-content {
+  text-align: center;
+  color: white;
+  background-color: rgb(41, 41, 39);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  display: block;
+  margin-top: 200px;
+}
+//final contents
+
+//JavaScript
+.content-javascript {
+  margin-left: -20px;
+  text-align: center;
+}
+
+.text-javascript {
+  text-align: justify;
+  width: 800px;
+  margin-left: -200px;
+}
+
+.container .javascript-video {
+  margin-left: -45px;
+}
+//final javascript
+
+//Login
+.login-container {
+  position: absolute;
+  left: 0;
+  top: 10;
+  bottom: 0;
+  background: linear-gradient(#f4f5bd, #f1be4f);
+  border-radius: 0px 10px 10px 10px;
+  height: 50%;
+  width: 90%;
+  z-index: -1;
+}
+.title-login {
+  margin-bottom: 40px;
+  margin-top: -50px;
+}
+
+.card-body {
+  margin-bottom: -150px;
+}
+
+.title-signin {
+  margin-top: 5px;
+}
+//final login
+
+//JavaScript content
+.javascript-container {
+  position: absolute;
+  left: 0;
+  top: 10;
+  bottom: 0;
+  background: linear-gradient(#f4f5bd, #f8f692);
+  border-radius: 0px 10px 10px 10px;
+  box-shadow: 5px 5px 5px 5px rgb(223, 223, 223);
+  height: 90%;
+  width: 90%;
+  z-index: -1;
+}
+
+.text-2-javascript {
+  font-size: 20px;
+}
+
+.javascript-video {
+  box-shadow: 5px 5px 5px 5px rgb(175, 167, 167);
+  height: 300px;
+  width: 450px;
+  margin-bottom: 50px;
+}
+
+.arrow {
+  margin-top: -195px;
+  margin-left: 210px;
+  height: 60px;
+  width: 60px;
+  margin-bottom: 120px;
+}
+.title-javascript {
+  font-size: 35px;
+  font-family: Comic sans MS;
+}
+
+.text-2-javascript {
+  margin-left: 200px;
+  text-align: right;
+  height: 15px;
+  width: 210px;
+  margin-bottom: 50px;
+  font-family: cursive;
+}
+
+.text-javascript {
+  font-family: Verdana;
+}
+//final Javascript
+
+//npm content
+.npm-container {
+  position: absolute;
+  left: 0;
+  top: 10;
+  bottom: 0;
+  background: linear-gradient(#fafaf4, #c0f3bb);
+  border-radius: 0px 10px 10px 10px;
+  box-shadow: 5px 5px 5px 5px rgb(223, 223, 223);
+  height: 90%;
+  width: 90%;
+  z-index: -1;
+}
+//final npm
+
+//react content
+.react-container {
+  position: absolute;
+  left: 0;
+  top: 10;
+  bottom: 0;
+  background: linear-gradient(#fafaf4, #6adcf8);
+  border-radius: 0px 10px 10px 10px;
+  box-shadow: 5px 5px 5px 5px rgb(223, 223, 223);
+  height: 90%;
+  width: 90%;
+  z-index: -1;
+}
+//final react
+
+//sass content
+.sass-container {
+  position: absolute;
+  left: 0;
+  top: 10;
+  bottom: 0;
+  background: linear-gradient(#fafaf4, #f0cdea);
+  border-radius: 0px 10px 10px 10px;
+  box-shadow: 5px 5px 5px 5px rgb(223, 223, 223);
+  height: 90%;
+  width: 90%;
+  z-index: -1;
+}
+//final sass
+
+//babel content
+.babel-container {
+  position: absolute;
+  left: 0;
+  top: 10;
+  bottom: 0;
+  background: linear-gradient(#fafaf4, #f3f5a5);
+  border-radius: 0px 10px 10px 10px;
+  box-shadow: 5px 5px 5px 5px rgb(223, 223, 223);
+  height: 90%;
+  width: 90%;
+  z-index: -1;
+}
+//final babel
+
+//webpack content
+.webpack-container {
+  position: absolute;
+  left: 0;
+  top: 10;
+  bottom: 0;
+  background: linear-gradient(#fafaf4, #6cdff3);
+  border-radius: 0px 10px 10px 10px;
+  box-shadow: 5px 5px 5px 5px rgb(223, 223, 223);
+  height: 90%;
+  width: 90%;
+  z-index: -1;
+}
+//final webpack
+
+//firebase content
+.firebase-container {
+  position: absolute;
+  left: 0;
+  top: 10;
+  bottom: 0;
+  background: linear-gradient(#fafaf4, #fdbe49);
+  border-radius: 0px 10px 10px 10px;
+  box-shadow: 5px 5px 5px 5px rgb(223, 223, 223);
+  height: 910px;
+  width: 90%;
+  z-index: -1;
+  margin-bottom: -200px;
+}
+//final firebase
+
+//lodash content
+.lodash-container {
+  position: absolute;
+  left: 0;
+  top: 10;
+  bottom: 0;
+  background: linear-gradient(#fafaf4, #a7a4a6);
+  border-radius: 0px 10px 10px 10px;
+  box-shadow: 5px 5px 5px 5px rgb(223, 223, 223);
+  height: 90%;
+  width: 90%;
+  z-index: -1;
+}
+//final lodash

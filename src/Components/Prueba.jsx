@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Form, Button, Card, Container } from "react-bootstrap";
-import { useAuth } from "../Context/AuthContext";
+import React from "react";
+import {Button, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { useAuth } from "../Context/AuthContext";
+
 const Prueba = () => {
   const { logout } = useAuth();
   const history = useHistory();
-
   async function handleLogout() {
     try {
       await logout();

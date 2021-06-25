@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../Context/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import _ from "lodash";
 
 const SignUp = (props) => {
   const emailRef = useRef();
@@ -32,13 +32,14 @@ const SignUp = (props) => {
     if (checkConfirmPassword()) {
       props.addData({ email: values.email, password: values.password });
       setValues({ ...initialStateValues });
-      history.push("/");
+      history.push("/login");
       setShow(false);
     } else {
       setShow(true);
     }
     try {
-      await signup(emailRef.current.value, passwordRef.current.value);
+      const lowerCaseEmail = _.toLower(emailRef.current.value);
+      await signup(lowerCaseEmail, passwordRef.current.value);
     } catch {
       console.error("Error");
     }
@@ -58,77 +59,63 @@ const SignUp = (props) => {
       loadUserInForm(props.currentId);
     }
   }, [props.currentId]);
-
-  //   const checkConfirmPassword = () => {
-  //     if (password === confirmPasswordRef) {
-  //       return true;
-  //     }
-  //      return false;
-  //   };
-
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2>Registrate</h2>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
-                ref={emailRef}
-                placeholder="Enter email"
-                onChange={handleControlChange}
-                value={values.email}
-              />
-            </Form.Group>
+      <h2 className="title-signin">Sign in</h2>
+      <Card.Body className="card-body">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group id="email">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              name="email"
+              type="email"
+              ref={emailRef}
+              placeholder="Enter email"
+              onChange={handleControlChange}
+              value={values.email}
+            />
+          </Form.Group>
 
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                name="password"
-                type="password"
-                ref={passwordRef}
-                placeholder="Password"
-                onChange={handleControlChange}
-                value={values.password}
-              />
-            </Form.Group>
-            <Form.Group id="confirmPassword">
-              <Form.Label>Confirm your Password</Form.Label>
-              <Form.Control
-                name="confirmPassword"
-                type="password"
-                ref={confirmPasswordRef}
-                placeholder="Confirm your Password"
-                onChange={handleControlChange}
-                value={values.confirmPassword}
-              />
-            </Form.Group>
-            {show ? (
-              <Alert
-                variant="danger"
-                onClose={() => setShow(false)}
-                dismissible
-              >
-                <Alert.Heading>Las contraseñas no concuerdan</Alert.Heading>
-              </Alert>
-            ) : (
-              ""
-            )}
+          <Form.Group id="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              name="password"
+              type="password"
+              ref={passwordRef}
+              placeholder="Password"
+              onChange={handleControlChange}
+              value={values.password}
+            />
+          </Form.Group>
+          <Form.Group id="confirmPassword">
+            <Form.Label>Confirm your Password</Form.Label>
+            <Form.Control
+              name="confirmPassword"
+              type="password"
+              ref={confirmPasswordRef}
+              placeholder="Confirm your Password"
+              onChange={handleControlChange}
+              value={values.confirmPassword}
+            />
+          </Form.Group>
+          {show ? (
+            <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+              <Alert.Heading>Las contraseñas no concuerdan</Alert.Heading>
+            </Alert>
+          ) : (
+            ""
+          )}
+          <Form.Label>
+            Ya tienes una cuenta? <Link to="/login">Log In</Link>
+          </Form.Label>
 
-            <Form.Label>
-              Ya tienes una cuenta? <Link to="/">Log In</Link>
-            </Form.Label>
-
-            <Button variant="primary" size="lg" block type="submit">
-              {" "}
-              {props.currentId === "" ? "Guardar" : "Actualizar"}
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
+          <Button variant="outline-dark" size="lg" block type="submit">
+            {" "}
+            {props.currentId === "" ? "Guardar" : "Actualizar"}
+          </Button>
+        </Form>
+      </Card.Body>
+      <div className="login-container"></div>
     </>
   );
 };
